@@ -1,0 +1,38 @@
+
+<div class="container">
+
+  <button [routerLink]="['/']">Home</button>
+
+  <h1>Details about {{ pet.name }}</h1>
+
+  <div class="details">
+    <table>
+      <tr>
+        <td>Pet Type:</td>
+        <td>{{ pet.type }}</td>
+      </tr>
+      <tr>
+        <td>Description:</td>
+        <td>{{ pet.description }}</td>
+      </tr>
+      <tr>
+        <td>Skills:</td>
+        <td>
+          <ul>
+            <li *ngFor="let skill of pet.skills">
+              {{ skill.name }}
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Likes:</td>
+        <td>{{ pet.likes }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <button (click)="like()" [disabled]="liked">Like this pet</button>
+  <button (click)="adopt()">Adopt this pet</button>
+
+</div>

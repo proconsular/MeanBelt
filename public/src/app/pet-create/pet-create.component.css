@@ -1,0 +1,40 @@
+
+input, label {
+    display: block;
+}
+
+.skills {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+input[type='submit'] {
+    margin-top: 20px;
+}
+
+.error {
+    color: red;
+    padding-left: 8px;
+    padding-right: 8px;
+    border: 2px solid red;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.button {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border: 2px solid #aaa;
+    color: #444;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    background: #fff;
+}
+
+.button:disabled {
+    color: red;
+    border-color: red;
+}

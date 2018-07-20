@@ -1,8 +1,8 @@
 db = require 'mongoose'
-Product = db.model 'Product'
+Pet = db.model 'Pet'
 
-createProduct = (request, response) ->
-    product = new Product request.body
+createRequest = (request, response) ->
+    product = new Pet request.body
     product.save (error) ->
         if error
             response.json error
@@ -10,26 +10,26 @@ createProduct = (request, response) ->
             response.json { message: "Success" }
 
 readAll = (request, response) ->
-    Product.find().then (data) ->
+    Pet.find().then (data) ->
         response.json data
     .catch (errors) ->
         response.json errors
 
 readOne = (request, response) ->
-    Product.findById(request.params.id).then (data) ->
+    Pet.findById(request.params.id).then (data) ->
         response.json data
     .catch (error) ->
         response.json error
 
 replace = (request, response) ->
-    Product.findByIdAndUpdate(request.params.id, request.body,
+    Pet.findByIdAndUpdate(request.params.id, request.body,
     { runValidators: true }).then (data) ->
         response.json { message: "Success" }
     .catch (error) ->
         response.json error
 
-deleteProduct = (request, response) ->
-    Product.findByIdAndRemove(request.params.id).then (result) ->
+deleteRequest = (request, response) ->
+    Pet.findByIdAndRemove(request.params.id).then (result) ->
         response.json { message: "Success" }
     .catch (error) ->
         response.json error
@@ -37,7 +37,7 @@ deleteProduct = (request, response) ->
 module.exports = {
     readAll: readAll,
     readOne: readOne,
-    create: createProduct,
+    create: createRequest,
     put: replace,
-    delete: deleteProduct
+    delete: deleteRequest
 }

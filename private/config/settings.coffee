@@ -9,7 +9,7 @@ path = require 'path'
 app.use bodyParser.json()
 app.use bodyParser.urlencoded { extended: true }
 app.use session({
-    secret: "09as820dsj90j2a",
+    secret: "09aswer32j2a",
     resave: false,
     saveUninitialized: true,
     cookie: { maxAge: 60000 }

@@ -1,0 +1,70 @@
+
+<div class="container">
+
+    <form (submit)="onSubmit()">
+        <label for="">Name</label>
+
+        <div *ngIf="name.errors" class="errors">
+          <div *ngIf="name.errors['required']" class="error">
+            Name is required
+          </div>
+          <div *ngIf="name.errors['pattern']" class="error">
+            Name can only contain letters.
+          </div>
+          <div *ngIf="name.errors['minlength']" class="error">
+            Name must be 3 letters or longer.
+          </div>
+        </div>
+        <div *ngIf="!unique" class="error">
+          Name must be unique.
+        </div>
+    
+        <input type="text" name="model.name" [(ngModel)]="model.name"
+        required pattern="^[ a-zA-Z]+$" minlength="3" #name='ngModel' (keyup)="onNameInput()">
+    
+        <label for="">Type</label>
+    
+        <div *ngIf="type.errors" class="errors">
+          <div *ngIf="type.errors['required']" class="error">
+            Type is required
+          </div>
+          <div *ngIf="type.errors['pattern']" class="error">
+            Type can only contain letters.
+          </div>
+          <div *ngIf="type.errors['minlength']" class="error">
+            Type must be 3 letters or longer.
+          </div>
+        </div>
+    
+        <input type="text" name="model.type" [(ngModel)]="model.type"
+        required minlength="3" pattern="^[ a-zA-Z]+$" #type='ngModel'>
+    
+        <label for="">Description</label>
+    
+        <div *ngIf="description.errors" class="errors">
+          <div *ngIf="description.errors['required']" class="error">
+            Description is required
+          </div>
+          <div *ngIf="description.errors['minlength']" class="error">
+            Description must be 3 letters or longer.
+          </div>
+        </div>
+    
+        <input type="text" name="model.description" [(ngModel)]="model.description"
+        required minlength="3" #description='ngModel'>
+    
+        <label for="">Skills</label>
+        <div class="skills">
+          <div class="skill">
+            <input type="text" name="model.skills[0].name" [(ngModel)]="model.skills[0].name">
+            <input type="text" name="model.skills[1].name" [(ngModel)]="model.skills[1].name">
+            <input type="text" name="model.skills[2].name" [(ngModel)]="model.skills[2].name">
+          </div>
+        </div>
+    
+        <input class="button" type="submit" value="Update Pet" [disabled]="!name.valid || !type.valid || !description.valid || !unique">
+    </form>
+  
+    <button class="button" [routerLink]="['/']">Cancel</button>
+    
+  </div>
