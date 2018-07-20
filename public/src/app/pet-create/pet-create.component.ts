@@ -29,7 +29,6 @@ export class PetCreateComponent implements OnInit {
     this.model.skills = ss;
     this._pets.create(this.model).subscribe(data => {
       if ('errors' in data) {
-        
       } else {
         this._router.navigate(['/']);
       }
